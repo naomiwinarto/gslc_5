@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +19,6 @@ Route::get('/', function (){
     return view('welcome');
 });
 
-Route::get('/mahasiswa', function () {
-    $arrMahasiswa = ['Kevin' => 70, 'Ivana' => 62, 'Naomi' =>75, 'Grace' => 59];
-    $class = 'LG01';
-    return view('mahasiswa')->with
-    ('mahasiswa', $arrMahasiswa)->with('class', $class);
-});
+Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 
-Route::get('/dosen', function () {
-    $arrDosen = ['Lili', 'Cecilia'];
-    return view('dosen')->with
-    ('dosen', $arrDosen);
-});
+Route::get('/dosen', [DosenController::class, 'index']);
